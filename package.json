@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config ./webpack.prod.config.js",
     "dev": "webpack-dev-server --host 0.0.0.0 --mode development --config webpack.dev.config.js",
-    "test": "mocha --require @babel/register test/*.spec.js "
+    "test": "mocha --require @babel/register test/*.spec.js"
   },
   "repository": {
     "type": "git",
