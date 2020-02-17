@@ -1,6 +1,6 @@
 {
   "name": "global-promise",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A helper library to create a promise to be resolved/rejected from your other parts of codebase",
   "main": "dist/gpromise.js",
   "scripts": {
