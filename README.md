@@ -31,7 +31,7 @@ but it will require a lot of code.
 Solve it with `GPromise` with a few of lines of code:
 
 ``` js
-import GPromise from 'global-promise';
+import * as GPromise from 'global-promise';
 
 
 // Creates a promise to be settled from other parts of code.
