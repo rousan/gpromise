@@ -6,13 +6,13 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && npm run build:umd && npm run build:esm",
-    "build:umd": "rimraf dist/umd && webpack -p",
-    "build:esm": "rimraf dist/esm && tsc && terser dist/esm/index.js -o dist/esm/index.js --source-map \"content='dist/esm/index.js.map',url=index.js.map\"",
+    "build": "rimraf dist && npm run build:umd && npm run build:esm && npm run build:cjs",
+    "build:umd": "rimraf dist/umd && cross-env PROD=true webpack -p",
+    "build:cjs": "rimraf dist/cjs && tsc --project tsconfig.cjs.json",
+    "build:esm": "rimraf dist/esm && tsc",
     "dev": "webpack-dev-server -d",
     "lint": "eslint '**/*.{ts,js}'",
     "test": "cross-env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha"

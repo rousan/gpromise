@@ -3,8 +3,6 @@
     "target": "es5",
     "module": "es2020",
     "allowJs": false,
-    "declaration": true,
-    "declarationMap": true,
     "sourceMap": true,
     "outDir": "./dist/esm",
     "importHelpers": true,

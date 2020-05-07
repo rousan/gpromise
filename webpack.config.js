@@ -3,9 +3,10 @@ const path = require("path");
 const outputDirectory = path.resolve(__dirname, "dist", "umd");
 const entryFile = path.resolve(__dirname, "src", "index.ts");
 const libraryName = "GPromise";
-const outFileName = `${libraryName.toLowerCase()}.js`;
+const outFileInfix = process.env.PROD ? ".min" : "";
+const outFileName = `${libraryName.toLowerCase()}${outFileInfix}.js`;
 
-// Webpack doesnot support universal bundles yet:
+// Webpack does not support universal bundles yet:
 // https://github.com/webpack/webpack/issues/6525
 const globalThisSnippet = `(function() {
   if (typeof globalThis === 'object') return globalThis;
@@ -41,7 +42,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        use: "ts-loader",
+        loader: "ts-loader",
         exclude: /node_modules/,
       },
     ],
