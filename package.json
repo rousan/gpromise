@@ -17,7 +17,8 @@
     "build:esm": "rimraf dist/esm && tsc",
     "dev": "webpack-dev-server -d",
     "lint": "eslint '**/*.{ts,js}'",
-    "test": "cross-env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha"
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha",
+    "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
