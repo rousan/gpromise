@@ -6,7 +6,8 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build": "rimraf dist && npm run build:umd && npm run build:esm && npm run build:cjs",
