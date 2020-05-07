@@ -11,7 +11,7 @@ const promiseMap = new Map();
  * @param promiseId - The unique id for the new promise.
  * @returns Returns a new pending promise.
  */
-const createPromise = (promiseId?: GlobalPromiseID): Promise<unknown> => {
+const createPromise = <T>(promiseId?: GlobalPromiseID): Promise<T> => {
   if (promiseId === undefined || promiseId === null || promiseId === "") {
     throw new Error("Please give a promise id");
   }
