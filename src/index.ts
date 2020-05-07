@@ -1,4 +1,6 @@
-import uuid from 'uuid/v4';
+import { v4 as uuid } from "uuid";
+
+type GlobalPromiseID = string | number;
 
 const promiseMap = new Map();
 
@@ -6,16 +8,18 @@ const promiseMap = new Map();
  * Creates a new promise and registers to the map. If a promise with the same id
  * already exists it throws an error.
  *
- * @param {String|Number} promiseId - The unique id for the new promise.
- * @returns {Promise} Returns a new pending promise.
+ * @param promiseId - The unique id for the new promise.
+ * @returns Returns a new pending promise.
  */
-const createPromise = (promiseId) => {
-  if (promiseId === undefined || promiseId === null || promiseId === '') {
-    throw new Error('Please give a promise id');
+const createPromise = (promiseId?: GlobalPromiseID): Promise<unknown> => {
+  if (promiseId === undefined || promiseId === null || promiseId === "") {
+    throw new Error("Please give a promise id");
   }
 
   if (promiseMap.has(promiseId)) {
-    throw new Error(`A promise with ${promiseId} id already exists, please destroy or resolve or reject it first`);
+    throw new Error(
+      `A promise with ${promiseId} id already exists, please destroy or resolve or reject it first`
+    );
   }
 
   return new Promise((res, rej) => {
@@ -32,10 +36,10 @@ const createPromise = (promiseId) => {
  * If a promise-like object is given as the value, its resolved value would be
  * used and will be rejected if the given promise is rejected.
  *
- * @param {String|Number} promiseId - The unique id for an existing promise.
- * @param {*} value - The resolved value.
+ * @param promiseId - The unique id for an existing promise.
+ * @param value - The resolved value.
  */
-const resolvePromise = (promiseId, value) => {
+const resolvePromise = (promiseId: GlobalPromiseID, value: unknown): void => {
   if (!promiseMap.has(promiseId)) {
     return;
   }
@@ -56,10 +60,10 @@ const resolvePromise = (promiseId, value) => {
  * Rejects an existing promise and removes the promise handle
  * from the map. It ignores if the id does not exist.
  *
- * @param {String|Number} promiseId - The unique id for an existing promise.
- * @param {Error} error - An Error instance with a message.
+ * @param promiseId - The unique id for an existing promise.
+ * @param error - An Error instance with a message.
  */
-const rejectPromise = (promiseId, error) => {
+const rejectPromise = (promiseId: GlobalPromiseID, error: Error): void => {
   if (!promiseMap.has(promiseId)) {
     return;
   }
@@ -75,34 +79,34 @@ const rejectPromise = (promiseId, error) => {
  * it available to be garbage collected. But, if it is being used in other part
  * of code, please resolve or reject it first.
  *
- * @param {String|Number} promiseId - The unique id for an existing promise.
+ * @param promiseId - The unique id for an existing promise.
  */
-const destroyPromise = (promiseId) => {
+const destroyPromise = (promiseId: GlobalPromiseID): void => {
   promiseMap.delete(promiseId);
 };
 
 /**
  * It just removes all the promise instance handles from this library and make
- * them available to be garbage collected. But, if they are being used in other part
- * of code, please resolve or reject them first.
+ * them available to be garbage collected. But, if they are being used in other
+ * part of code, please resolve or reject them first.
  */
-const destroyAllPromises = () => {
+const destroyAllPromises = (): void => {
   promiseMap.clear();
 };
 
 /**
  * Returns all the registered promise ids.
  *
- * @returns {[String|Number]} Returns all promise ids in an array.
+ * @returns Returns all promise ids in an array.
  */
-const getAllPromiseIds = () => [...promiseMap.keys()];
+const getAllPromiseIds = (): GlobalPromiseID[] => [...promiseMap.keys()];
 
 /**
  * An utility function to generate a new unique id.
  *
- * @returns {String} Returns an unique id.
+ * @returns Returns an unique id.
  */
-const genNewPromiseId = () => uuid();
+const genNewPromiseId = (): GlobalPromiseID => uuid();
 
 export {
   createPromise as create,
