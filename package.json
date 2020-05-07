@@ -32,6 +32,9 @@
     "global"
   ],
   "author": "Rousan Ali <hello@rousan.io> (https://rousan.io)",
+  "contributors": [
+    "Nakshatra Mukhopadhyay <nakshatra.mukhopadhyay1994@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rousan/gpromise/issues"
