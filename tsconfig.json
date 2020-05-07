@@ -4,6 +4,7 @@
     "module": "es2020",
     "allowJs": false,
     "sourceMap": true,
+    "declaration": true,
     "outDir": "./dist/esm",
     "importHelpers": true,
     "downlevelIteration": true,
