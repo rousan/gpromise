@@ -1,4 +1,4 @@
-/* global GPromise */
+const GPromise = require("../dist/umd/gpromise.js");
 
 GPromise.create("my_id").then((val) => {
   console.log(`Promise with 'my_id' id is resolved with: ${val}`);

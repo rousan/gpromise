@@ -132,7 +132,7 @@ typings/
 tmp/
 temp/
 
-yarn.lock
-package-lock.json
+# Build artifacts
+dist
 
 # End of https://www.gitignore.io/api/node,macos
