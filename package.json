@@ -1,6 +1,6 @@
 {
   "name": "global-promise",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A helper library to create a promise to be resolved/rejected from your other parts of codebase",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
